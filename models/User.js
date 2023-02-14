@@ -1,30 +1,34 @@
 const { Schema, model } = require("mongoose");
-const thoughoutSchema = require("./Thought");
 
 const userSchema = new Schema(
   {
     username: {
       type: String,
-      // unique
+      unique: true,
       required: true,
-      // trimmed
+      trim: true,
     },
     email: {
       type: String,
       required: true,
-      // unique
-      // Must match a valid email address (look into Mongoose's matching validation) .. ??
+      unique: true,
+      match: [/.+@.+\..+/, "Must match an email address!"],
     },
-    thoughts: [thoughtSchema],
-    friends: [userSchema],
+    // referenced lesson 21-Ins Virtuals: Post Model for the below code
+    thoughts: [{ type: Schema.Types.ObjectId, ref: "thoughts" }],
+    friends: [{ type: Schema.Types.ObjectId, ref: "users" }],
   },
   {
     toJSON: {
-      getters: true,
+      virtuals: true,
     },
   }
 );
 
-const User = model("user", userSchema);
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
+
+const User = model("users", userSchema);
 
 module.exports = User;
