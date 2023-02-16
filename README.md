@@ -2,7 +2,9 @@
 
 ## Description 
 
-This assignment required an API for a social network application where users are able to share their thoughts. Though, one of the requirements was to react to friends' thoughts, I was unable to get that far given the timeline of the course and it's coming to an end.
+This assignment required me to build out an a social network API application where users are able to share their thoughts. Though, one of the requirements was to react to friends' thoughts, I was unable to get that far given the timeline of the course and it's coming to an end. 
+
+In this assignment, I learned a better understanding of Insomnia, where data is transformed from the controllers and applied to the routes in order to produce, edit and delete data from Insomnia. I overcame many challenges when it came to the user and thought controllers, and overall I feel more confident using a NoSQL database.
 
 ## User Story
 AS A social media startup
