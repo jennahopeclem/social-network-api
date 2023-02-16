@@ -7,9 +7,9 @@ This assignment required me to build out an a social network API application whe
 In this assignment, I learned a better understanding of Insomnia, where data is transformed from the controllers and applied to the routes in order to produce, edit and delete data from Insomnia. I overcame many challenges when it came to the user and thought controllers, and overall I feel more confident using a NoSQL database.
 
 ## User Story
-AS A social media startup
+<pre>AS A social media startup
 I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
+SO THAT my website can handle large amounts of unstructured data</pre>
 
 ## Installation
 
