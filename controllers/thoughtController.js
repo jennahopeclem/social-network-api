@@ -1,9 +1,14 @@
 const { Thought, User } = require("../models");
 
 module.exports = {
-  getAllThoughts: (req, res) => {
-    console.log("Getting all thoughts");
-    res.status(200).json("Thoughts go here");
+  getAllThoughts: async (req, res) => {
+    try {
+      const allThoughts = await Thought.find({});
+      res.json(allThoughts);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
   },
 
   createThought: async (req, res) => {
@@ -24,21 +29,38 @@ module.exports = {
     }
   },
 
-  updateThought: async (req, res) => {
+  updateThoughtsById: async (req, res) => {
     try {
       const { username, thoughtText } = req.body;
-      const user = await User.findOne({ username });
-      if (!user) {
-        res.sendStatus(404);
-        return;
-      }
-      const updatedThought = await Thought.updateOne({ username, thoughtText });
-      user.thoughts.push(updatedThought);
-      await user.save();
+      const { id } = req.params;
+      // await User.findByIdAndUpdate{username, thoughtText};
+      await Thought.findByIdAndUpdate(id, { username, thoughtText });
+      const updatedThought = await Thought.findById(id);
       res.json(updatedThought);
     } catch (err) {
       console.error(err);
       res.sendStatus(500);
     }
-  }
+  },
+
+  deleteThoughtsById: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const deletedThought = await Thought.findByIdAndDelete(id);
+      res.json(deletedThought);
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  },
+
+    // createReaction: async (req, res) => {
+    //   try {
+    //     const { reactions } = req.body;
+    //     const reaction = await Thought.findOneAndUpdate(
+    //       {_id: req.params.thoughtId},
+    //     )
+    //   }
+    // }
+
 };
