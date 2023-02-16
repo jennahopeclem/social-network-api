@@ -17,4 +17,4 @@ Also applied, is the Javascript date library used to format timestamps using the
 
 ## Usage
 
-Click [here](https://drive.google.com/file/d/15s-hJIg3UHEBWZdUjQeSCV6wCYQOoH4S/view) for a walkthrough
+Click [here](https://drive.google.com/file/d/15s-hJIg3UHEBWZdUjQeSCV6wCYQOoH4S/view) for a walkthrough video.
